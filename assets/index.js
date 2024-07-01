@@ -70,7 +70,7 @@ function animate() {
                 document.body.classList.add('yellow-background'); // Tambahkan kelas setelah animasi countdown selesai
                 setTimeout(function() {
                     window.location.href = 'assets/utama.html'; // Redirect ke halaman utama.html setelah latar belakang kuning
-                }, 5820); // Ubah angka 1000 sesuai dengan durasi transisi atau animasi CSS
+                }, 5800); // Ubah angka 1000 sesuai dengan durasi transisi atau animasi CSS
             }
         }
 
