@@ -1,0 +1,106 @@
+/* ===== Google Font Import - Poppins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FCB0BF; /* Latar belakang pink */
+    overflow: hidden;
+}
+
+body.yellow-background {
+    background-color: #a66ee6; /* Latar belakang kuning setelah animasi selesai */
+}
+
+
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container .text {
+    position: relative;
+    color: #f1f440;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.container .text.first-text {
+    color: #FFF;
+}
+
+.text.sec-text:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #FCB0BF;
+    border-left: 2px solid #f49140;
+    animation: animate 2s steps(12) infinite;
+}
+
+@keyframes animate {
+    40%, 60% {
+        left: calc(100% + 4px);
+    }
+    100% {
+        left: 0%;
+    }
+}
+
+
+.hidden {
+    display: none;
+}
+
+#container {
+    position: absolute;
+    margin: auto;
+    width: 100vw;
+    height: 80pt;
+    top: 0;
+    bottom: 0;
+    display: none; /* initially hidden */
+    align-items: center;
+    justify-content: center;
+    filter: url(#threshold) blur(0.6px);
+}
+
+#text1,
+#text2 {
+    position: absolute;
+    width: 100%;
+    display: inline-block;
+    font-family: "Raleway", sans-serif;
+    font-size: 120px; /* Smaller font size for mobile */
+    text-align: center;
+    user-select: none;
+    color: white; /* Font color white */
+}
+
+@media (max-width: 600px) {
+    #text1,
+    #text2 {
+        font-size: 80px; /* Even smaller font size for very small screens */
+    }
+}
+
+

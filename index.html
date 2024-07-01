@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="stylesheet" href="assets/style.css">
+    <!--<title>Typing Text Animation</title>-->
+    <style>
+        /* CSS untuk animasi fade out */
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        .fade-out {
+            animation: fadeOut 2s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container initial-animation">
+        <span class="text first-text">Hallo Sebrina</span>
+        <span class="text sec-text"></span>
+    </div>
+
+    <div id="container" class="hidden">
+        <span id="text1"></span>
+        <span id="text2"></span>
+    </div>
+    
+    <svg id="filters">
+        <defs>
+            <filter id="threshold">
+                <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+                                            0 1 0 0 0
+                                            0 0 1 0 0
+                                            0 0 0 255 -140" />
+            </filter>
+        </defs>
+    </svg>
+
+    <script>
+        const firstText = document.querySelector(".first-text");
+        const secText = document.querySelector(".sec-text");
+        const initialContainer = document.querySelector(".initial-animation");
+        const finalContainer = document.getElementById("container");
+
+        const textLoad = () => {
+            setTimeout(() => {
+                firstText.style.display = "none";
+                secText.textContent = "Wait";
+            }, 2000); // Hilangkan teks pertama setelah 2 detik
+            setTimeout(() => {
+                secText.textContent = "for the";
+            }, 4000); // Ganti teks setelah 2 detik
+            setTimeout(() => {
+                secText.textContent = "Surprise in";
+            }, 6000); // Ganti teks setelah 2 detik
+            setTimeout(() => {
+                secText.classList.add("fade-out"); // Tambahkan efek fade out
+            }, 7000); // Mulai fade out setelah 1 detik
+            setTimeout(() => {
+                initialContainer.style.display = "none";
+                finalContainer.style.display = "block";
+                animate(); // Mulai animasi filter setelah 8 detik
+            }, 8000); // Ganti tampilan setelah 2 detik
+        }
+
+        textLoad();
+    </script>
+    <script src="assets/index.js"></script>
+</body>
+</html>

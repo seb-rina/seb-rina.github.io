@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Birthday Sebi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url('bg.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* Styling untuk card utama */
+        .card {
+            width: 300px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px auto; /* Center the cards */
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-button {
+            display: block;
+            width: 100%;
+            background-color: pink;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .card-button:hover {
+            background-color: #9145a0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .modal-description {
+            color: #666666;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .additional-card {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+        }
+
+        .additional-card h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .additional-card p {
+            margin-bottom: 0;
+        }
+
+        /* Dekorasi untuk ulang tahun */
+        .modal-decoration {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+            border-radius: 12px;
+            z-index: -1;
+        }
+
+        /* Animasi untuk card baru */
+        .card-new {
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .card-new.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-color: #f8e8e8; /* Warna latar belakang yang lembut */
+        }
+
+        .card-text span {
+            margin: 5px 0;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        /* Media query untuk ukuran mobile */
+        @media (max-width: 600px) {
+            .card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Card utama -->
+<div class="card" id="myCard">
+    <img src="sebi.jpeg" alt="Card Image">
+    <div class="card-content">
+        <a href="#" class="card-button" id="openModal">Baca Surat</a>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-decoration"></div>
+        <img src="sebi.jpeg" alt="Gambar Modal" id="modalImage">
+        <div class="additional-card">
+            <p>Hallo Sebrina selamat ulang tahun yang ke 18 tahun maaf aku tidak dapat memberikan sesuatu yang begitu spesial kali ini,
+                aku senang bisa dekat lagi denganmu, apapun yang kamu lalui aku siap membantumu jadi jangan ragu untuk meminta tolong padaku. Senang bisa mengenalmu selama ini</p>
+        </div>
+    </div>
+</div>
+
+<!-- Card dengan teks baru -->
+<div class="card card-new" id="myCardNew">
+    <span>Happy birthday!</span>
+    <span>I hope all your birthday wishes</span>
+    <span>and dreams come true.</span>
+    <span>Be happy! Today is the day you were brought into this world to be a blessing and inspiration to the people around you!</span>
+</div>
+
+<!-- Card ketiga -->
+<div class="card" id="myCard2">
+    <img src="gmbr2.jpeg" alt="Card Image" id="openModal2">
+</div>
+
+<!-- Modal kedua untuk card ketiga -->
+<div id="myModal2" class="modal">
+    <div class="modal-content">
+        <div class="modal-decoration"></div>
+        <img src="gmbr2.jpeg" alt="Gambar Modal">
+     
+    </div>
+</div>
+
+<!-- Card keempat -->
+<div class="card card-new card-text" id="myCard4">
+    <span>aku harap kamu suka dengan ini, thank you for all❤️</span>
+    <img src="kuromi-icegif-1.gif" alt="">
+    <a href="https://www.youtube.com/watch?v=ChukpOHfAI8" class="card-button">Tekan tombol ini</a>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var card = document.getElementById("myCard");
+        var cardNew = document.getElementById("myCardNew");
+        var card2 = document.getElementById("myCard2");
+        var card4 = document.getElementById("myCard4");
+
+        // Animate all cards
+        [card, cardNew, card2, card4].forEach(function(element) {
+            element.style.opacity = 1;
+            element.style.transform = "translateY(0)";
+        });
+
+        var modal = document.getElementById("myModal");
+        var modal2 = document.getElementById("myModal2");
+
+        var btn = document.getElementById("openModal");
+        var btn2 = document.getElementById("openModal2");
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        btn2.onclick = function() {
+            modal2.style.display = "block";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+            }
+        }
+
+        var animated = false;
+
+        window.addEventListener("scroll", function() {
+            if (!animated && (isInViewport(cardNew) || isInViewport(card4))) {
+                cardNew.classList.add("show");
+                card4.classList.add("show");
+                animated = true;
+            }
+        });
+
+        function isInViewport(element) {
+            var rect = element.getBoundingClientRect();
+            var html = document.documentElement;
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || html.clientHeight) &&
+                rect.right <= (window.innerWidth || html.clientWidth)
+            );
+        }
+    });
+</script>
+
+</body>
+</html>
