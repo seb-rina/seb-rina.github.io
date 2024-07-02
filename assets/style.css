@@ -17,7 +17,7 @@ body {
 }
 
 body.yellow-background {
-    background-color: #a66ee6; /* Latar belakang kuning setelah animasi selesai */
+    background-color: white; /* Latar belakang kuning setelah animasi selesai */
 }
 
 .container .text {
@@ -79,7 +79,7 @@ body.yellow-background {
     font-size: 120px; /* Smaller font size for mobile */
     text-align: center;
     user-select: none;
-    color: white; /* Font color white */
+    color: #FCB0BF; /* Font color white */
 }
 
 @media (max-width: 600px) {

@@ -19,30 +19,20 @@
 
         /* CSS untuk posisi gambar di tengah vertikal */
         .container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    position: relative;
-    background-color: #FCB0BF; /* Latar belakang pink */
-    overflow: hidden;
-}
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Mengatur teks dan gambar di tengah secara vertikal */
+        height: 100vh;
+        position: relative;
+         }
 
-.container .kuromi-gif2 {
-    max-width: 100%;
-    height: auto; /* Memastikan tinggi gambar sesuai dengan aspek rasio */
-    margin-top: auto; /* Memusatkan gambar di tengah vertikal */
-    margin-bottom: auto;
-}
-
-@media (max-width: 600px) {
-    .container .kuromi-gif {
-        max-height: calc(100vh - 100px); /* Batasi tinggi gambar untuk layar kecil */
-    }
-}
-
+        .container img {
+        margin-top: 20px; /* Atur jarak antara gambar dan teks */
+        max-width: auto;
+        height: 400px; /* Pastikan gambar tidak melebihi lebar container */
+        }
 
     </style>
 </head>
