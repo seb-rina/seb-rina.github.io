@@ -7,8 +7,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
-
 body {
     min-height: 100vh;
     display: flex;
@@ -20,17 +18,6 @@ body {
 
 body.yellow-background {
     background-color: #a66ee6; /* Latar belakang kuning setelah animasi selesai */
-}
-
-
-
-.container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
 }
 
 .container .text {
@@ -65,7 +52,6 @@ body.yellow-background {
         left: 0%;
     }
 }
-
 
 .hidden {
     display: none;
@@ -102,5 +88,3 @@ body.yellow-background {
         font-size: 80px; /* Even smaller font size for very small screens */
     }
 }
-
-
