@@ -20,18 +20,22 @@
             background-repeat: no-repeat;
         }
 
-        /* Styling untuk card utama */
         .card {
             width: 300px;
             background-color: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             overflow: hidden;
-            margin: 20px auto; /* Center the cards */
+            margin: 20px auto;
             padding: 20px;
             opacity: 0;
-            transform: translateY(-50px);
+            transform: translateY(50px);
             transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .card img {
@@ -61,7 +65,6 @@
             background-color: #9145a0;
         }
 
-        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -121,7 +124,6 @@
             margin-bottom: 0;
         }
 
-        /* Dekorasi untuk ulang tahun */
         .modal-decoration {
             position: absolute;
             top: -10px;
@@ -133,18 +135,6 @@
             z-index: -1;
         }
 
-        /* Animasi untuk card baru */
-        .card-new {
-            opacity: 0;
-            transform: translateY(-50px);
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-        }
-
-        .card-new.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .card-text {
             display: flex;
             flex-direction: column;
@@ -152,7 +142,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            background-color: #f8e8e8; /* Warna latar belakang yang lembut */
+            background-color: #f8e8e8;
         }
 
         .card-text span {
@@ -162,7 +152,6 @@
             color: #333;
         }
 
-        /* Media query untuk ukuran mobile */
         @media (max-width: 600px) {
             .card {
                 width: 90%;
@@ -172,7 +161,6 @@
 </head>
 <body>
 
-<!-- Card utama -->
 <div class="card" id="myCard">
     <img src="sebi.jpeg" alt="Card Image">
     <div class="card-content">
@@ -180,7 +168,6 @@
     </div>
 </div>
 
-<!-- Modal -->
 <div id="myModal" class="modal">
     <div class="modal-content">
         <div class="modal-decoration"></div>
@@ -192,7 +179,6 @@
     </div>
 </div>
 
-<!-- Card dengan teks baru -->
 <div class="card card-new" id="myCardNew">
     <span>Happy birthday!</span>
     <span>I hope all your birthday wishes</span>
@@ -200,21 +186,17 @@
     <span>Be happy! Today is the day you were brought into this world to be a blessing and inspiration to the people around you!</span>
 </div>
 
-<!-- Card ketiga -->
 <div class="card" id="myCard2">
     <img src="gmbr2.jpeg" alt="Card Image" id="openModal2">
 </div>
 
-<!-- Modal kedua untuk card ketiga -->
 <div id="myModal2" class="modal">
     <div class="modal-content">
         <div class="modal-decoration"></div>
         <img src="gmbr2.jpeg" alt="Gambar Modal">
-     
     </div>
 </div>
 
-<!-- Card keempat -->
 <div class="card card-new card-text" id="myCard4">
     <span>aku harap kamu suka dengan ini, thank you for all❤️</span>
     <img src="kuromi-icegif-1.gif" alt="">
@@ -223,20 +205,37 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var card = document.getElementById("myCard");
-        var cardNew = document.getElementById("myCardNew");
-        var card2 = document.getElementById("myCard2");
-        var card4 = document.getElementById("myCard4");
+        var cards = document.querySelectorAll(".card");
+        
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
 
-        // Animate all cards
-        [card, cardNew, card2, card4].forEach(function(element) {
-            element.style.opacity = 1;
-            element.style.transform = "translateY(0)";
-        });
+        function showVisibleCards() {
+            cards.forEach(function(card) {
+                if (isElementInViewport(card)) {
+                    card.classList.add("show");
+                }
+            });
+        }
 
+        // Tampilkan card pertama setelah 2 detik
+        setTimeout(function() {
+            cards[0].classList.add("show");
+        }, 2000);
+
+        // Tambahkan event listener untuk scroll
+        window.addEventListener("scroll", showVisibleCards);
+
+        // Kode untuk modal
         var modal = document.getElementById("myModal");
         var modal2 = document.getElementById("myModal2");
-
         var btn = document.getElementById("openModal");
         var btn2 = document.getElementById("openModal2");
 
@@ -255,27 +254,6 @@
             if (event.target == modal2) {
                 modal2.style.display = "none";
             }
-        }
-
-        var animated = false;
-
-        window.addEventListener("scroll", function() {
-            if (!animated && (isInViewport(cardNew) || isInViewport(card4))) {
-                cardNew.classList.add("show");
-                card4.classList.add("show");
-                animated = true;
-            }
-        });
-
-        function isInViewport(element) {
-            var rect = element.getBoundingClientRect();
-            var html = document.documentElement;
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || html.clientHeight) &&
-                rect.right <= (window.innerWidth || html.clientWidth)
-            );
         }
     });
 </script>

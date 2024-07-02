@@ -16,12 +16,25 @@
         .fade-out {
             animation: fadeOut 2s ease-in-out forwards;
         }
+
+        /* CSS untuk posisi gambar di bawah teks */
+        .container {
+            position: relative;
+        }
+
+        .container img {
+            position: absolute;
+            bottom: 0;
+            left: 80%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 <body>
     <div class="container initial-animation">
         <span class="text first-text">Hallo Sebrina</span>
         <span class="text sec-text"></span>
+        <img src="assets/kuromi-gif2.gif" alt="Kuromi GIF">
     </div>
 
     <div id="container" class="hidden">
